@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Nuno Michel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1F252E;
+            color: #fff;
+            transition: background 0.4s, color 0.4s;
+        }
+
+        /* Header / Nav */
+        header {
+            padding: 1.7rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            max-width: 80%;
+            margin: auto;
+            align-items: center;
+            background-color: transparent;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .profile-img {
+            position: absolute;
+            top: 20px;    
+            right: 20px;  
+        }
+
+        .profile-img img {
+            width: 150px;
+            border-radius: 50%;
+            border: 3px solid #00E8F8;
+            box-shadow: 0 0 15px #00E8F8;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: .97rem;
+            font-weight: 600;
+            letter-spacing: .7px;
+            padding: 0.4rem 1rem;
+        }
+
+        nav a.active,
+        nav a:hover {
+            color: #00E8F8;
+            border-radius: 1rem;
+            transition: all .3s ease-in-out;
+        }
+
+        #click {
+            display: none;
+        }
+
+        .menu {
+            display: none;
+        }
+
+        .menu i {
+            color: #00E8F8;
+        }
+
+        /* Section */
+        section {
+            margin: 2rem 8.5rem;
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 2rem auto;
+        }
+
+        .main h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .main p {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #ddd;
+        }
+
+        /* Social Icons */
+        .social {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.4rem;
+            margin-top: 1.7rem;
+        }
+
+        .social a {
+            color: #00E8F8;
+            font-size: 1rem;
+            border: 1.6px solid #00E8F8;
+            border-radius: 50%;
+            padding: .35rem;
+            text-align: center;
+            width: 26px;
+            transition: all 0.3s;
+        }
+
+        .social a:hover {
+            color: #1F252E;
+            background-color: #00E8F8;
+            box-shadow: 0 0 20px #00E8F8;
+        }
+
+        /* Destaque */
+        .highlight {
+            color: #11ad86;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem auto;
+            max-width: 1000px;
+        }
+
+        .card {
+            padding: 1.5rem;
+            background: #2A2F3A;
+            border-radius: 1rem;
+            text-align: center;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 0 20px #00E8F8;
+            border-color: #00E8F8;
+            color: #fff;
+        }
+
+        .card:active {
+            transform: scale(0.95);
+            background: #00E8F8;
+            color: #1F252E;
+        }
+
+        /* Estilo das barras de progresso */
+        .skill {
+            margin: 15px 0;
+        }
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .progress-bar {
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 15px;
+        }
+        .progress {
+            background: linear-gradient(90deg, #007bff, #00c6ff);
+            height: 100%;
+            text-align: right;
+            padding-right: 5px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+
+        /* Modo Claro/Escuro */
+        .mode-toggle {
+            position: fixed;
+            bottom: 15px;
+            left: 15px;
+            background: #00E8F8;
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            box-shadow: 0 0 10px #00E8F8;
+            transition: background 0.3s;
+        }
+
+        .mode-toggle:hover {
+            background: #11ad86;
+            color: #fff;
+        }
+
+        /* Estilos para as seções de conteúdo */
+        .content-section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #2A2F3A;
+            scroll-margin-top: 80px;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #00E8F8;
+        }
+
+        .content-box {
+            background: #2A2F3A;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .content-box h3 {
+            color: #00E8F8;
+            margin: 1.5rem 0 0.8rem 0;
+            font-size: 1.3rem;
+        }
+
+        .content-box p, .content-box ul {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .content-box ul {
+            padding-left: 1.5rem;
+        }
+
+        .content-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Container para categorias de habilidades */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .skill-category {
+            background: rgba(0, 232, 248, 0.1);
+            padding: 1.2rem;
+            border-radius: 0.8rem;
+            border-left: 4px solid #00E8F8;
+        }
+
+        .skill-category h3 {
+            margin-top: 0;
+        }
+
+        /* Botão de voltar ao topo */
+        .back-to-top {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .back-to-top a {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .back-to-top a:hover {
+            color: #fff;
+        }
+
+        /* Botão Imprimir */
+        .print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+        .print-btn:hover {
+            background: #0056b3;
+        }
+
+        /* Estilo da Galeria */
+        .gallery-section {
+            padding: 3rem 0;
+        }
+
+        .gallery {
+            column-count: 4;
+            column-gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pin {
+            break-inside: avoid;
+            margin-bottom: 25px;
+            background: linear-gradient(145deg, #FFFFFF, #F8F9FA);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid #FF6B35;
+        }
+
+        .pin:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .pin img, .pin video {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: brightness(1.1);
+        }
+
+        .pin audio {
+            width: 100%;
+            margin: 15px;
+            background: #FF6B35;
+            border-radius: 8px;
+        }
+
+        .pin iframe {
+            border: none;
+            background: #000000;
+        }
+
+        .pin h3 {
+            margin: 15px;
+            font-size: 20px;
+            color: #001F3F;
+            font-weight: bold;
+        }
+
+        .pin p {
+            margin: 0 15px 15px;
+            color: #333333;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* Estilo do Formulário */
+        .form-section {
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #ffffff 60%, #FF6B35 40%);
+            color: #333;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .form-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 2rem;
+        }
+
+        .form-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #FF6B35;
+        }
+
+        .form-info p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item i {
+            margin-right: 10px;
+            color: #FF6B35;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #FF6B35;
+            box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #FF6B35;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #e55a2b;
+        }
+
+        /* Responsividade */
+        @media only screen and (max-width: 1024px) {
+            .gallery {
+                column-count: 3;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .content-section {
+                padding: 2rem 0;
+            }
+            
+            .content-section h2 {
+                font-size: 1.7rem;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                margin: 2rem 1.5rem;
+            }
+            
+            .menu {
+                display: block;
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #244D61;
+            }
+
+            header {
+                padding: 0.7rem 1rem;
+                align-items: center;
+                max-width: 100%;
+            }
+
+            nav {
+                position: absolute;
+                display: grid;
+                top: 75px;
+                text-align: center;
+                background-color: #1F252E;
+                left: -100%;
+                z-index: 1;
+                width: 100%;
+            }
+
+            #click:checked~nav {
+                left: 0%;
+                transition: all 0.3s ease;
+            }
+
+            .profile-img img {
+                width: 120px;
+            }
+
+            .gallery {
+                column-count: 2;
+                padding: 10px;
+            }
+
+            .form-container {
+                flex-direction: column;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .gallery {
+                column-count: 1;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+
+        /* Tema Claro */
+        body.light-mode {
+            background: #f0f0f0;
+            color: #222;
+        }
+
+        body.light-mode header .logo a,
+        body.light-mode nav a {
+            color: #222;
+        }
+
+        body.light-mode .card {
+            background: #fff;
+            color: #222;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="#">Nuno.</a>
+        </div>
+        <input type="checkbox" id="click">
+        <label for="click" class="mainicon">
+            <div class="menu">
+                <i class="bi bi-list"></i>
+            </div>
+        </label>
+    </header>
+
+    <section>
+        <div class="main">
+            <div class="detail">
+                <h1>Bem vindo... acaba de entrar no meu multiverso <span class="highlight"></span></h1>
+                <p>Conhecimento não ocupa espaço <br> Eu sou o que tá à procura!</p>
+                <div class="social">
+                    <a href="#"><i class="bi bi-github"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                </div>
+            </div>
+            <!-- Foto topo direita -->
+            <div class="profile-img">
+                <img src="IMG_2139.jpg" alt="CV Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- 4 Caixas intuitivas -->
+    <section class="cards">
+        <a href="#ideias" class="card">Sobre mim</a>
+        <a href="#habilidades" class="card">Habilidades técnicas</a>
+        <a href="#conexoes" class="card">Educação</a>
+        <a href="#desafios" class="card">Experiência profissional</a>
+        <a href="#galeria" class="card">Galeria</a>
+        <a href="#contato" class="card">Contato</a>
+    </section>
+
+    <!-- Seção Sobre mim -->
+    <section id="ideias" class="content-section">
+        <h2>Sobre mim</h2>
+        <div class="content-box">
+            <p>Meu nome é <strong>Nuno Michel Pacheco</strong>, tenho 19 anos e sou Moçambicano. 
+            Sou apaixonado por tecnologia, aprendizado contínuo e estou em busca de oportunidades que me permitam aplicar os meus conhecimentos, evoluir profissionalmente e contribuir de forma significativa para projetos inovadores.</p>
+
+            <div class="back-to-top">
+                <a href="#" class="card">↑ Voltar ao Topo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Habilidades Técnicas -->
+    <section id="habilidades" class="content-section">
+        <h2>Habilidades Técnicas</h2>
+        <div class="content-box">
+
+            <div class="skill">
+                <div class="skill-name">HTML5</div>
+                <div class="progress-bar"><div class="progress" style="width: 85%;">85%</div></div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">Segurança Cibernética</div>
+                <div class="progress-bar"><div class="progress" style="width: 70%;">70%</div></div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">Java</div>
+                <div class="progress-bar"><div class="progress" style="width: 75%;">75%</div></div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">MYsql</div>
+                <div class="progress-bar"><div class="progress" style="width: 60%;">60%</div></div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">Word Avançado</div>
+                <div class="progress-bar"><div class="progress" style="width: 90%;">90%</div></div>
+            </div>
+
+            <h3>Idiomas:</h3>
+            <ul>
+                <li>Português: Fluente</li>
+                <li>Inglês: Razoável</li>
+                <li>Espanhol: Básico</li>
+                <li>Xangana: Fluente (oral)</li>
+            </ul>
+
+            <div class="back-to-top">
+                <a href="#" class="card">↑ Voltar ao Topo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Educação -->
+    <section id="conexoes" class="content-section">
+        <h2>Educação</h2>
+        <div class="content-box">
+            <ul>
+                <li><strong>CV5 Programação Web-em curso</strong> – ITC, Maputo (2025)</li>
+                <li><strong>CV4 Tecnico de Suporte Informático</strong> – ITC, Maputo (2024)</li>
+                <li><strong>CV3 da Indústria Eletricidade</strong> – ITC, Maputo (2023)</li>
+                <li><strong>10º Ano</strong> – Escola Secundária da Catembe, Maputo (2021)</li>
+                <li><strong>7º Ano</strong> – Escola Primária Saúl Filipe Tembe, Catembe-Maputo (2018)</li>
+            </ul>
+
+            <div class="back-to-top">
+                <a href="#" class="card">↑ Voltar ao Topo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Experiência Profissional -->
+    <section id="desafios" class="content-section">
+        <h2>Experiência Profissional</h2>
+        <div class="content-box">
+            <ul>
+                <li>Computação Avançada – Technicol, Maputo (2022)</li>
+                <li>Segurança Cibernética – Estudos online e livros (2022)</li>
+                <li>Computação de Segurança Elétrica – Unitec, Maputo (2022)</li>
+                <li>Programação Básica – Estudos online e livros (2022)</li>
+                <li>Word Avançado – Technicol, Maputo (2022)</li>
+            </ul>
+
+            <p><em>Obs.: Ainda não possuo experiência profissional formal, mas tenho dedicação e vontade de aprender e aplicar os conhecimentos adquiridos.</em></p>
+
+            <div class="back-to-top">
+                <a href="#" class="card">↑ Voltar ao Topo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Galeria -->
+    <section id="galeria" class="gallery-section">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #00E8F8;">Galeria</h2>
+        <div class="gallery">
+            <!-- Foto 1 -->
+            <div class="pin">
+                <img src="HQ Pixs Blog (438).jpg" alt="Foto de uma paisagem montanhosa">
+                <h3></h3>
+                <p></p>
+            </div>
+
+            <!-- Foto 2 -->
+            <div class="pin">
+                <img src="HQ Pixs Blog (4) - Cópia.jpg" alt="Foto de uma cidade à noite">
+                <h3></h3>
+                <p></p>
+            </div>
+
+            <!-- Foto 3 -->
+            <div class="pin">
+                <img src="HQ Pixs Blog (122) - Cópia.jpg" alt="Foto de flores">
+                <h3></h3>
+                <p></p>
+            </div>
+
+            <!-- Foto 4 -->
+            <div class="pin">
+                <img src="HQ Pixs Blog (118) - Cópia.jpg" alt="Foto abstrata">
+                <h3></h3>
+                <p></p>
+            </div>
+
+            <!-- Foto 5 -->
+            <div class="pin">
+                <img src="HQ Pixs Blog (130) - Cópia.jpg" alt="Foto de uma praia ao entardecer">
+                <h3></h3>
+                <p></p>
+            </div>
+
+            <!-- Foto 6 -->
+            <div class="pin">
+                <img src="HQ Pixs Blog (137) - Cópia.jpg" alt="Foto de uma floresta densa">
+                <h3></h3>
+                <p></p>
+            </div>
+
+            <!-- Foto 7 -->
+            <div class="pin">
+                <img src="HQ Pixs Blog (199) - Cópia.jpg" alt="Foto de uma montanha nevada">
+                <h3></h3>
+                <p></p>
+            </div>
+
+            <!-- Foto 8 -->
+            <div class="pin">
+                <img src="HQ Pixs Blog (32) - Cópia.jpg" alt="Foto urbana moderna">
+                <h3></h3>
+                <p></p>
+            </div>
+
+            <!-- Vídeo 1 -->
+            <div class="pin">
+                <video controls width="100%" height="auto">
+                    <source src="NOG  A História do Hater (prod. Paiva)  Clipe Oficial.mp4" type="video/mp4">
+                </video>
+                <h3></h3>
+                <p></p>
+            </div>
+
+            <!-- Vídeo 2 -->
+            <div class="pin">
+                <iframe width="100%" height="315" src="NGC Daddy  Bendito  (Official Music Video).mp4" frameborder="0" allowfullscreen></iframe>
+                <h3>NGC</h3>
+                <p></p>
+            </div>
+
+            <!-- Vídeo 3 -->
+            <div class="pin">
+                <iframe width="100%" height="315" src="NGC Daddy  Glockada (Official Music Video).mp4" title="Vídeo 3: Cachoeira em 4K" frameborder="0" allowfullscreen></iframe>
+                <h3>NGC</h3>
+                <p></p>
+            </div>
+
+            <!-- Vídeo 4 -->
+            <div class="pin">
+                <iframe width="100%" height="315" src="NGC Daddy  Real Underground.mp4" title="Vídeo 4: Viagem pelas Montanhas" frameborder="0" allowfullscreen></iframe>
+                <h3>NGC</h3>
+                <p></p>
+            </div>
+
+            <!-- Música 1 -->
+            <div class="pin">
+                <audio controls>
+                    <source src="Mc Ig  Pé na Areia (Dj Victor) _Official Video_.m4a" type="audio/wav">
+                </audio>
+                <h3>mc IG</h3>
+                <p></p>
+            </div>
+
+            <!-- Música 2 -->
+            <div class="pin">
+                <iframe width="100%" height="80" src="Emitê Único  Plug do Stuani (Official Visualizer).m4a" title="Música 2: Ritmo Energético" frameborder="0" allowfullscreen></iframe>
+                <h3></h3>
+                <p></p>
+            </div>
+        </div>
+        
+        <div class="back-to-top">
+            <a href="#" class="card">↑ Voltar ao Topo</a>
+        </div>
+    </section>
+
+    <!-- Seção Formulário de Contato -->
+    <section id="contato" class="form-section">
+        <div class="form-container">
+            <div class="form-info">
+                <h2>Entre em Contato</h2>
+                <p>Estou sempre aberto a novas oportunidades, projetos interessantes e conversas sobre tecnologia. Entre em contato comigo através deste formulário ou pelos meios abaixo.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="bi bi-envelope"></i>
+                        <span>nuno.michelpacheco09@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-telephone"></i>
+                        <span>+258 866583894</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-geo-alt"></i>
+                        <span>Maputo, Moçambique</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Assunto</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botão Modo Claro/Escuro -->
+    <button class="mode-toggle" id="modeToggle">
+        <i class="bi bi-brightness-high-fill"></i>
+    </button>
+
+    <!-- Botão Imprimir CV -->
+    <button class="print-btn" onclick="window.print()">
+        <i class="bi bi-printer"></i> Imprimir CV
+    </button>
+
+    <script>
+        // Toggle Modo Claro/Escuro
+        const modeToggle = document.getElementById('modeToggle');
+        const body = document.body;
+
+        // Verificar tema salvo
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-mode');
+            modeToggle.innerHTML = '<i class="bi bi-moon-fill"></i>';
+        }
+
+        modeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                modeToggle.innerHTML = '<i class="bi bi-moon-fill"></i>';
+                localStorage.setItem('theme', 'light');
+            } else {
+                modeToggle.innerHTML = '<i class="bi bi-brightness-high-fill"></i>';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Smooth scroll para as âncoras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Menu mobile
+        document.getElementById('click').addEventListener('change', function() {
+            const nav = document.querySelector('nav');
+            if (this.checked) {
+                nav.style.left = '0%';
+            } else {
+                nav.style.left = '-100%';
+            }
+        });
+
+        // Formulário de contato
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado pela sua mensagem! Entrarei em contato em breve.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
